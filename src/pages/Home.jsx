@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {addPerson} from '../redux/actions/person';
+import Layout from '../components/Layout';
 
 class Home extends React.Component {
     constructor(props) {
@@ -39,6 +40,7 @@ class Home extends React.Component {
         const{ surname, firstname, job, salary, date} =this.state;
 
         return (
+            <Layout>
             <div>
                 <Link to='/people' />
             <form
@@ -106,8 +108,8 @@ class Home extends React.Component {
             </form>
             <Link to='/people'><button className = "btn btn-outline-dark">Catre lista</button></Link>
             </div>
-            
-        )
+            </Layout>   
+        );
     }
 }
 
