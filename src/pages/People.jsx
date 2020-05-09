@@ -1,26 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Home from './Home';
 import { connect } from 'react-redux';
+import Person from '../components/Person';
 
 
 function People(props) {
-
+    console.log(props.people);
     return (
         <div>
             {
+                
                 props.people.length
-                    ? props.people.map(person => {
-                        return (
-                            <div>
-                                <p>{person.surname}</p>
-                                <p>{person.firstname}</p>
-                                <p>{person.job}</p>
-                                <p>{person.salary}</p>
-                                <p>{person.date}</p>
-                            </div>
-                        )
-
+                    ? props.people.map((person, id) => {
+                        return <Person 
+                        surname={person.surname}
+                        firstname={person.firstname}
+                        job={person.job}
+                        salary={person.salary} 
+                        date={person.date}
+                        key={id}
+                        />
                     })
                     : <div>
                         <p>Nu sunt persoane adaugate!</p>

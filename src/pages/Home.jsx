@@ -46,14 +46,14 @@ class Home extends React.Component {
                 onSubmit={(event) => {
                     event.preventDefault();
                     this.props.addPerson({
-                        person: {
+                         
                             surname, 
                             firstname, 
                             job, 
                             salary, 
                             date
                             }
-                        });
+                        );
                     this.setState({
                         surname: '',
                         firstname: '',
