@@ -48,7 +48,6 @@ class Home extends React.Component {
                 onSubmit={(event) => {
                     event.preventDefault();
                     this.props.addPerson({
-                         
                             surname, 
                             firstname, 
                             job, 
@@ -70,6 +69,7 @@ class Home extends React.Component {
                 <input
                     type="text"
                     name="surname"
+                    value={this.state.surname}
                     onChange={(event) => this.updateSurname(event)}
                     // onBlur={(event) => this.validateSurname(event)}
                 />
@@ -77,6 +77,7 @@ class Home extends React.Component {
                 <input
                     type="text"
                     name="firstname"
+                    value={this.state.firstname}
                     onChange={(event) => this.updateFirstName(event)}
                     // onBlur={(event) => this.validateFirstName(event)}
                 />
@@ -84,6 +85,7 @@ class Home extends React.Component {
                 <input
                     type="text"
                     name="job"
+                    value={this.state.job}
                     onChange={(event) => this.updateJob(event)}
                     // onBlur={(event) => this.validateJob(event)}
                 />
@@ -92,6 +94,7 @@ class Home extends React.Component {
                 <input
                     type="text"
                     name="salary"
+                    value={this.state.salary}
                     onChange={(event) => this.updateSalary(event)}
                 // onBlur={(event)=>this.validateSalary(event)}
                 />
@@ -100,6 +103,7 @@ class Home extends React.Component {
                 <input
                     type="date"
                     name="date"
+                    value={this.state.date}
                     onChange={(event) => this.updateDate(event)}
                 />
                 <input className="input-data"
