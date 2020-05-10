@@ -1,80 +1,60 @@
 import React from 'react';
+import { setFilter } from '../redux/actions/filter';
+import {connect} from 'react-redux';
 
-class SidebarList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            filters: [
-                {
-                    name: "filter1",
-                    checked: false
-                },
-                {
-                    name: "filter2",
-                    checked: false
-                },
-                {
-                    name: "filter3",
-                    checked: false
-                }
-            ]
-        }
-    }
+function SidebarList(props) {
+    return (
+        <div className="col-12 col-md-3">
+            <p>Filtreaza dupa salariu:</p>
+            <div>
+                <div className="filter">
+                    <input
+                        type="checkbox"
+                        name="filter1"
+                        onChange={() => props.setFilter({
+                            filterName: "filter1",
+                            min: 0,
+                            max: 2500
+                        })}
+                    />
+                    <label htmlFor="filter1">&lt; 2500 LEI</label>
+                </div>
 
-    checkValue(name){
-        selectedFilter=this.state.filters.find(filter => filter.name === name)
-        return selectedFilter.checked;
-    }
+                <div className="filter" >
+                    <input
+                        type="checkbox"
+                        name="filter2"
+                        onChange={() => props.setFilter({
+                            filterName: "filter2",
+                            min: 2500,
+                            max: 4000
+                        })}
+                    />
+                    <label htmlFor="filter2">2500 - 4000 LEI</label>
+                </div>
 
-    filterSalary(event, min, max){
-        if (event.target.checked) {
-            this.props.filterSalaryCallback(lowerLimit, upperLimit);
-        } else {
-            this.props.filterSalaryCallback(0, Infinity);
-        }
-        this.handleCheckboxes(event.target.name);
-    }
-
-    render(){
-        return(
-            <div className="col-12 col-md-3">
-                <p>Filtreaza dupa pret:</p>
-                <div>
-                    <div className="filter">
-                        <input
-                         type="checkbox"
-                         name="filter1"
-                         checked={this.checkValue('filter1')}
-                         onChange={(event) => this.filterSalary(event, 0, 2500)}
-                        />
-                        <label htmlFor="filter1">&lt; 2500 LEI</label>
-                    </div>
-
-                    <div className="filter" >
-                        <input
-                         type="checkbox"
-                         name="filter2"
-                         checked={this.checkValue('filter2')}
-                         onChange={(event) => this.filterSalary(event, 2500, 4000)}
-                        />
-                        <label htmlFor="filter2">2500 - 4000 LEI</label>
-                    </div>
-
-                    <div className="filter" >
-                        <input
-                         type="checkbox"
-                         name="filter3"
-                         checked={this.checkValue('filter3')}
-                         onChange={(event) => this.filterSalary(event, 4000, Infinity)}
-                        />
-                        <label htmlFor="filter2">&gt; 4000 LEI</label>
-                    </div>
-
+                <div className="filter" >
+                    <input
+                        type="checkbox"
+                        name="filter3"
+                        onChange={() => props.setFilter({
+                            filterName: "filter3",
+                            min: 4000,
+                            max: Infinity
+                        })}
+                    />
+                    <label htmlFor="filter3">&gt; 4000 LEI</label>
                 </div>
 
             </div>
-        );
-    }
+
+        </div>
+    );
 }
 
-export default SidebarList;
+function mapDispatchToProps(dispatch) {
+    return {
+        setFilter: (payload) => dispatch(setFilter(payload))
+    };
+}
+export default connect(null, mapDispatchToProps)(SidebarList);

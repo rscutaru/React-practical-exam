@@ -1,6 +1,13 @@
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
 import {personReducer} from './reducers/person';
+import {filtersReducer} from './reducers/filter';
 
-const store=createStore(personReducer);
+
+const rootReducer= combineReducers({
+    people: personReducer,
+    filter: filtersReducer
+})
+
+const store=createStore(rootReducer);
 
 export default store;
