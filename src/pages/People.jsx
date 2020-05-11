@@ -36,13 +36,6 @@ function People(props) {
 }
 
 
-function mapStateToProps(state) {
-    const filters = state.filter.filters;
-    const people = state.people.people;
-    return {
-        filteredPeople: people.filter(person => applyFilters(person, filters))
-    }
-}
 
 function applyFilters(person, filters) {
     if(filters.length===0){
@@ -54,6 +47,29 @@ function applyFilters(person, filters) {
         }
     }
     return false;
+}
+
+
+function mapStateToProps(state) {
+    const filters = state.filter.filters;
+    const people = state.people.people;
+    const filteredPeople = people.filter(person => applyFilters(person, filters));
+    if(state.sort.sortBy===''){
+        return {
+            filteredPeople
+        }
+    }
+    const filteredAndSortedPeople=filteredPeople.sort((person1, person2)=> {
+        if(state.sort.sortBy==='surname'){
+            return person1.surname-person2.surname;
+        }
+        if(state.sort.sortBy==="salary"){
+            return person1.salary-person2.salary;
+        }
+    })
+    return {
+        filteredPeople: filteredAndSortedPeople
+    }
 }
 
 export default connect(mapStateToProps)(People);
