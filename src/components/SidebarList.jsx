@@ -47,6 +47,7 @@ function SidebarList(props) {
                         <input
                             type="checkbox"
                             name="filter1"
+                            checked={props.filters.some((e)=>e.filterName ==="filter1")}
                             onChange={() => props.setFilter({
                                 filterName: "filter1",
                                 min: 0,
@@ -60,6 +61,7 @@ function SidebarList(props) {
                         <input
                             type="checkbox"
                             name="filter2"
+                            checked={props.filters.some((e)=>e.filterName==="filter2")}
                             onChange={() => props.setFilter({
                                 filterName: "filter2",
                                 min: 2500,
@@ -73,6 +75,7 @@ function SidebarList(props) {
                         <input
                             type="checkbox"
                             name="filter3"
+                            checked={props.filters.some((e)=>e.filterName==="filter3")}
                             onChange={() => props.setFilter({
                                 filterName: "filter3",
                                 min: 4000,
@@ -90,7 +93,8 @@ function SidebarList(props) {
 }
 function mapStateToProps (state){
     return {
-        sortBy: state.sort.sortBy
+        sortBy: state.sort.sortBy,
+        filters: state.filter.filters
     }
 }
 
