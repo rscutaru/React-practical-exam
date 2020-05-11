@@ -14,7 +14,8 @@ function SidebarList(props) {
                             <input
                                 type="radio"
                                 name="sortBy"
-                                onClick={() => props.setSort({
+                                checked={props.sortBy==="surname"}
+                                onChange={() => props.setSort({
                                     sortBy: "surname"
                                 })}
                             />
@@ -27,7 +28,8 @@ function SidebarList(props) {
                             <input
                                 type="radio"
                                 name="sortBy"
-                                onClick={() => props.setSort({
+                                checked={props.sortBy==="salary"}
+                                onChange={() => props.setSort({
                                     sortBy: "salary"
                                 })}
                             />
@@ -86,6 +88,11 @@ function SidebarList(props) {
         </div>
     )
 }
+function mapStateToProps (state){
+    return {
+        sortBy: state.sort.sortBy
+    }
+}
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -93,4 +100,4 @@ function mapDispatchToProps(dispatch) {
         setSort: (payload) => dispatch(setSort(payload))
     };
 }
-export default connect(null, mapDispatchToProps)(SidebarList);
+export default connect(mapStateToProps, mapDispatchToProps)(SidebarList);
