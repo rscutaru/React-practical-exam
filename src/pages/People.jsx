@@ -9,7 +9,11 @@ function People(props) {
 
     return (
         <Layout>
-            <div>
+            <div className='row'>
+                <div className="col-6">
+            <SidebarList />
+            </div>
+            <div className="col-6">
                 {
                     props.filteredPeople.length
                         ? props.filteredPeople.map((person, id) => {
@@ -26,9 +30,9 @@ function People(props) {
                             <p>Nu sunt persoane adaugate!</p>
                         </div>
                 }
-                <SidebarList />
+            </div>    
                 <Link to='/'>
-                    <button>Catre adaugare utilizatori</button>
+                    <button className="btn btn-outline-dark ml-5">Catre adaugare utilizatori</button>
                 </Link>
             </div>
         </Layout>

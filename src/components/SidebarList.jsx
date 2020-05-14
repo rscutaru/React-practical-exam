@@ -5,13 +5,14 @@ import { setSort } from '../redux/actions/sort';
 
 function SidebarList(props) {
     return (
-        <div>
-            <div className="col-12 col-md-3">
-                <p>Sorteaza dupa nume si salariu:</p>
-                <div className="sort-container">
-                    <div className="sort">
-                        <label>
+        <div className="form-group">
+            <div className="form-group col-6 col-md-3 ml-4">
+                <p>Sortare dupa:</p>
+                <div className="form-check">
+                    <div className="sort ">
+                        <label className="form-check-label">
                             <input
+                                className="form-check-input"
                                 type="radio"
                                 name="sortBy"
                                 checked={props.sortBy==="surname"}
@@ -19,13 +20,14 @@ function SidebarList(props) {
                                     sortBy: "surname"
                                 })}
                             />
-                            Sorteaza dupa nume
+                            Nume
                         </label>
                     </div>
 
                     <div className="sort">
-                        <label>
+                        <label className="form-check-label">
                             <input
+                                className="form-check-input"
                                 type="radio"
                                 name="sortBy"
                                 checked={props.sortBy==="salary"}
@@ -33,18 +35,19 @@ function SidebarList(props) {
                                     sortBy: "salary"
                                 })}
                             />
-                            Sorteaza dupa salariu
+                            Salariu
                         </label>
                     </div>
                 </div>
             </div>
 
 
-            <div className="col-12 col-md-3">
+            <div className="form-group col-6 col-md-3 ml-5">
                 <p>Filtreaza dupa salariu:</p>
                 <div className="filters-container">
                     <div className="filter">
                         <input
+                            className="form-check-input"
                             type="checkbox"
                             name="filter1"
                             checked={props.filters.some((e)=>e.filterName ==="filter1")}
@@ -54,11 +57,12 @@ function SidebarList(props) {
                                 max: 2500
                             })}
                         />
-                        <label htmlFor="filter1">&lt; 2500 LEI</label>
+                        <label htmlFor="filter1" className="form-check-label">&lt; 2500 LEI</label>
                     </div>
 
                     <div className="filter" >
                         <input
+                            className="form-check-input"
                             type="checkbox"
                             name="filter2"
                             checked={props.filters.some((e)=>e.filterName==="filter2")}
@@ -68,11 +72,12 @@ function SidebarList(props) {
                                 max: 4000
                             })}
                         />
-                        <label htmlFor="filter2">2500 - 4000 LEI</label>
+                        <label htmlFor="filter2" className="form-check-label">2500 - 4000 LEI</label>
                     </div>
 
                     <div className="filter" >
                         <input
+                            className="form-check-input"
                             type="checkbox"
                             name="filter3"
                             checked={props.filters.some((e)=>e.filterName==="filter3")}
@@ -82,7 +87,7 @@ function SidebarList(props) {
                                 max: Infinity
                             })}
                         />
-                        <label htmlFor="filter3">&gt; 4000 LEI</label>
+                        <label htmlFor="filter3" className="form-check-label">&gt; 4000 LEI</label>
                     </div>
 
                 </div>
