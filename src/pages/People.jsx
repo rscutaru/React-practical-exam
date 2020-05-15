@@ -9,31 +9,33 @@ function People(props) {
 
     return (
         <Layout>
-            <div className='row'>
-                <div className="col-6">
-            <SidebarList />
-            </div>
-            <div className="col-6">
-                {
-                    props.filteredPeople.length
-                        ? props.filteredPeople.map((person, id) => {
-                            return <Person
-                                surname={person.surname}
-                                firstname={person.firstname}
-                                job={person.job}
-                                salary={person.salary}
-                                date={person.date}
-                                key={id}
-                            />
-                        })
-                        : <div>
-                            <p>Nu sunt persoane adaugate!</p>
-                        </div>
-                }
-            </div>    
-                <Link to='/'>
-                    <button className="btn btn-outline-dark ml-5">Catre adaugare utilizatori</button>
-                </Link>
+            <div className="container">
+                <div className='row'>
+                    <div className="col-6">
+                        <SidebarList />
+                    </div>
+                    <div className="col-6">
+                        {
+                            props.filteredPeople.length
+                                ? props.filteredPeople.map((person, id) => {
+                                    return <Person
+                                        surname={person.surname}
+                                        firstname={person.firstname}
+                                        job={person.job}
+                                        salary={person.salary}
+                                        date={person.date}
+                                        key={id}
+                                    />
+                                })
+                                : <div>
+                                    <p>Nu sunt persoane adaugate!</p>
+                                </div>
+                        }
+                    </div>
+                    <Link to='/'>
+                        <button className="btn btn-outline-dark ml-5">Catre adaugare utilizatori</button>
+                    </Link>
+                </div>
             </div>
         </Layout>
     );
@@ -42,7 +44,7 @@ function People(props) {
 
 
 function applyFilters(person, filters) {
-    if(filters.length===0){
+    if (filters.length === 0) {
         return true;
     }
     for (const filter of filters) {
@@ -58,17 +60,17 @@ function mapStateToProps(state) {
     const filters = state.filter.filters;
     const people = state.people.people;
     const filteredPeople = people.filter(person => applyFilters(person, filters));
-    if(state.sort.sortBy===''){
+    if (state.sort.sortBy === '') {
         return {
             filteredPeople
         }
     }
-    const filteredAndSortedPeople=filteredPeople.sort((person1, person2)=> {
-        if(state.sort.sortBy==='surname'){
-            return person1.surname-person2.surname;
+    const filteredAndSortedPeople = filteredPeople.sort((person1, person2) => {
+        if (state.sort.sortBy === 'surname') {
+            return person1.surname - person2.surname;
         }
-        if(state.sort.sortBy==="salary"){
-            return person1.salary-person2.salary;
+        if (state.sort.sortBy === "salary") {
+            return person1.salary - person2.salary;
         }
     })
     return {
