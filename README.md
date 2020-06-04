@@ -3,7 +3,7 @@
 ## Autor: Roxana Scutaru 
 ### **Descrierea priectului**
 
-Proiectul a fost realizat in JavaScript si, pe lângă funcționalitățile de mai jos, proiectul mai include:
+Proiectul a fost realizat in JavaScript. Funcționalitățile incluse in proiect sunt prezentate mai jos:
   - React Router pentru a construi rutele
  -  Redux pentru state management
  -  Câteva clase de Bootstrap
